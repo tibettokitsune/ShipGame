@@ -6,7 +6,7 @@ namespace Game.Scripts.Gameplay.PresentersLayer
     {
         public override void InstallBindings()
         {
-            
+            Container.BindInterfacesTo<PlayerPresenter>().AsSingle();
         }
     }
 }

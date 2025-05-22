@@ -1,6 +1,5 @@
 using Game.Scripts.Gameplay.DataLayer;
 using Game.Scripts.Gameplay.PresentersLayer;
-using Game.Scripts.Gameplay.ViewsLayer;
 using Zenject;
 
 namespace Game.Scripts.Gameplay
@@ -11,7 +10,7 @@ namespace Game.Scripts.Gameplay
         {
             Container.Install<DataLayerInstaller>();
             Container.Install<PresentersLayerInstaller>();
-            Container.Install<ViewsLayerInstaller>();
+            Container.BindInterfacesTo<GameManager>().AsSingle();
         }
     }
 }

@@ -1,21 +1,16 @@
+using Game.Scripts.Gameplay.DataLayer.Unit;
+using UniRx;
+
 namespace Game.Scripts.Gameplay.PresentersLayer
 {
     public class UnitPresenter : IUnitPresenter
     {
-        public void Rotate(float deltaAngle)
-        {
-            throw new System.NotImplementedException();
-        }
+        private UnitDataProvider _dataProvider;
+        public ReactiveProperty<float> SailPower { get; private set; } = new();
+        public float RotationPower { get; private set; }
 
-        public void SailMode(float value)
-        {
-            throw new System.NotImplementedException();
-        }
-    }
+        public void Rotate(float rotationPower) => RotationPower = rotationPower;
 
-    public interface IUnitPresenter
-    {
-        void Rotate(float deltaAngle);
-        void SailMode(float value);
+        public void SailMode(float value) => SailPower.Value = value;
     }
 }

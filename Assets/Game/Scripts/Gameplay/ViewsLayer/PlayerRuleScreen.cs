@@ -1,0 +1,21 @@
+using System;
+using Game.Scripts.Gameplay.PresentersLayer;
+using Game.Scripts.Infrastructure.UI;
+using UnityEngine;
+using Zenject;
+
+namespace Game.Scripts.Gameplay.ViewsLayer
+{
+    public class PlayerRuleScreen : UIScreen
+    {
+        [SerializeField] private WheelWidget wheel;
+        [Inject] private IRotationPowerChangeUseCase _rotationPowerChangeUseCase;
+        private const float Threshold = 0.15f;
+
+        private void Update()
+        {
+            if (Mathf.Abs(wheel.Value) < Threshold) return;
+            _rotationPowerChangeUseCase.Execute(wheel.Value);
+        }
+    }
+}

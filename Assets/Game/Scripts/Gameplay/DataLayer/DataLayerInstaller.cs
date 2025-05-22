@@ -1,3 +1,4 @@
+using Game.Scripts.Gameplay.DataLayer.Wind;
 using Zenject;
 
 namespace Game.Scripts.Gameplay.DataLayer
@@ -6,7 +7,7 @@ namespace Game.Scripts.Gameplay.DataLayer
     {
         public override void InstallBindings()
         {
-            
+            Container.BindInterfacesAndSelfTo<WindDataProvider>().AsSingle();
         }
     }
 }

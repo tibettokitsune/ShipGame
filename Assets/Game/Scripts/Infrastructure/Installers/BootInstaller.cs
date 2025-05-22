@@ -10,6 +10,7 @@ namespace Game.Scripts.Infrastructure.Installers
         {
             Container.Bind<LoadingScreen>().FromComponentInHierarchy(true).AsSingle();
             Container.BindInterfacesAndSelfTo<SceneManagerService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CameraService>().AsSingle();
             Container.BindInterfacesAndSelfTo<ServiceInitializer>().AsSingle();
         }
     }
