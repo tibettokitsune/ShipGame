@@ -14,8 +14,8 @@ namespace Game.Scripts.Gameplay.ViewsLayer
 
         private void Update()
         {
-            if (Mathf.Abs(wheel.Value) < Threshold) return;
-            _rotationPowerChangeUseCase.Execute(wheel.Value);
+            if (Mathf.Abs(wheel.Value) < Threshold) _rotationPowerChangeUseCase.Execute(0f);
+            else _rotationPowerChangeUseCase.Execute(wheel.Value);
         }
     }
 }

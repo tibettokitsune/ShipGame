@@ -1,3 +1,4 @@
+using System;
 using Game.Scripts.Gameplay.PresentersLayer;
 using UniRx;
 using UnityEngine;
@@ -7,21 +8,7 @@ namespace Game.Scripts.Gameplay.ViewsLayer
     [RequireComponent(typeof(Rigidbody))]
     public class ShipView : MonoBehaviour
     {
-        private UnitPresenter _unitPresenter;
         [SerializeField] private ShipSail shipSail;
-
-        public void Initialize(Vector3 position, Quaternion rotation, UnitPresenter shipPresenter)
-        {
-            transform.position = position;
-            transform.rotation = rotation;
-            _unitPresenter = shipPresenter;
-            _unitPresenter.SailPower.Subscribe(OnSailChange).AddTo(this);
-        }
-
-        private void OnSailChange(float power)
-        {
-            shipSail.LerpSail(power);
-        }
 
         public Rigidbody Rigidbody
         {
@@ -36,7 +23,27 @@ namespace Game.Scripts.Gameplay.ViewsLayer
             }
         }
 
+        private UnitPresenter _unitPresenter;
         private Rigidbody _rigidbody;
+
+        public void Initialize(Vector3 position, Quaternion rotation, UnitPresenter shipPresenter)
+        {
+            transform.position = position;
+            transform.rotation = rotation;
+            _unitPresenter = shipPresenter;
+            _unitPresenter.SailPower.Subscribe(OnSailChange).AddTo(this);
+        }
+
+        private void Start()
+        {
+            Rigidbody.maxAngularVelocity = 1f;
+            Rigidbody.maxLinearVelocity = 3f;
+        }
+
+        private void OnSailChange(float power)
+        {
+            shipSail.LerpSail(power);
+        }
 
         private void FixedUpdate()
         {
