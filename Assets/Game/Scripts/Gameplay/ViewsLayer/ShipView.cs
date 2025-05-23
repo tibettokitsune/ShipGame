@@ -1,16 +1,20 @@
-using System;
+using System.Numerics;
 using Game.Scripts.Gameplay.PresentersLayer;
 using UniRx;
 using UnityEngine;
+using Zenject;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Game.Scripts.Gameplay.ViewsLayer
 {
     [RequireComponent(typeof(Rigidbody))]
     public class ShipView : MonoBehaviour
     {
+        [Inject] private IWindPresenter _windPresenter;
         [SerializeField] private ShipSail shipSail;
 
-        public Rigidbody Rigidbody
+        private Rigidbody Rigidbody
         {
             get
             {
@@ -60,7 +64,9 @@ namespace Game.Scripts.Gameplay.ViewsLayer
         {
             if (_unitPresenter.SailPower.Value <= 0) return;
             var direction = transform.forward.normalized;
-            Rigidbody.AddForce(direction * _unitPresenter.SailPower.Value, ForceMode.Force);
+            var angleToWind = Vector3.Angle(direction, _windPresenter.Direction);
+            var windEffect = angleToWind < 25? 1f : angleToWind < 90? 0.5f : 0.1f;
+            Rigidbody.AddForce(direction * (_unitPresenter.SailPower.Value * windEffect), ForceMode.Force);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Game.Scripts.Infrastructure.Installers
             Container.BindInterfacesAndSelfTo<SceneManagerService>().AsSingle();
             Container.BindInterfacesAndSelfTo<CameraService>().AsSingle();
             Container.BindInterfacesAndSelfTo<ServiceInitializer>().AsSingle();
+            Container.BindInterfacesAndSelfTo<TimerService.TimerService>().AsSingle();
         }
     }
 }
