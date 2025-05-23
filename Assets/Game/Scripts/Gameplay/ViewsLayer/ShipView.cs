@@ -1,4 +1,3 @@
-using System.Numerics;
 using Game.Scripts.Gameplay.PresentersLayer;
 using UniRx;
 using UnityEngine;
@@ -13,6 +12,8 @@ namespace Game.Scripts.Gameplay.ViewsLayer
     {
         [Inject] private IWindPresenter _windPresenter;
         [SerializeField] private ShipSail shipSail;
+        [SerializeField] private ShootingView shootingView;
+        [SerializeField] private TakeDamageView takeDamageView;
 
         private Rigidbody Rigidbody
         {
@@ -27,15 +28,17 @@ namespace Game.Scripts.Gameplay.ViewsLayer
             }
         }
 
-        private UnitPresenter _unitPresenter;
+        private ShipPresenter _shipPresenter;
         private Rigidbody _rigidbody;
 
-        public void Initialize(Vector3 position, Quaternion rotation, UnitPresenter shipPresenter)
+        public void Initialize(Vector3 position, Quaternion rotation, ShipPresenter shipPresenter)
         {
             transform.position = position;
             transform.rotation = rotation;
-            _unitPresenter = shipPresenter;
-            _unitPresenter.SailPower.Subscribe(OnSailChange).AddTo(this);
+            _shipPresenter = shipPresenter;
+            takeDamageView.Setup(shipPresenter);
+            shootingView.Setup(shipPresenter);
+            _shipPresenter.SailPower.Subscribe(OnSailChange).AddTo(this);
         }
 
         private void Start()
@@ -57,16 +60,16 @@ namespace Game.Scripts.Gameplay.ViewsLayer
 
         private void ProcessRotationMovement()
         {
-            Rigidbody.AddTorque(new Vector3(0, _unitPresenter.RotationPower, 0), ForceMode.Force);
+            Rigidbody.AddTorque(new Vector3(0, _shipPresenter.RotationPower, 0), ForceMode.Force);
         }
 
         private void ProcessForwardMovement()
         {
-            if (_unitPresenter.SailPower.Value <= 0) return;
+            if (_shipPresenter.SailPower.Value <= 0) return;
             var direction = transform.forward.normalized;
             var angleToWind = Vector3.Angle(direction, _windPresenter.Direction);
             var windEffect = angleToWind < 25? 1f : angleToWind < 90? 0.5f : 0.1f;
-            Rigidbody.AddForce(direction * (_unitPresenter.SailPower.Value * windEffect), ForceMode.Force);
+            Rigidbody.AddForce(direction * (_shipPresenter.SailPower.Value * windEffect), ForceMode.Force);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Game.Scripts.Gameplay.ViewsLayer
             _parent = parent;
         }
 
-        public ShipView Create(Vector3 position, Quaternion rotation, UnitPresenter shipPresenter)
+        public ShipView Create(Vector3 position, Quaternion rotation, ShipPresenter shipPresenter)
         {
             var ship = _container.InstantiatePrefabForComponent<ShipView>(
                 _prefab,

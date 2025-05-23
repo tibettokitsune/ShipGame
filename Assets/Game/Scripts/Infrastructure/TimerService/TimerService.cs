@@ -9,9 +9,17 @@ namespace Game.Scripts.Infrastructure.TimerService
     {
         private readonly Dictionary<string, (float, ITimerHandler)> _timers = new();
         private readonly List<string> _idsToRemove = new();
-        public void SetupTimer(float time, ITimerHandler handler)
+        private readonly List<ITimerHandler> _handlersToTrigger = new();
+        public string SetupTimer(float time, ITimerHandler handler)
         {
-            _timers.Add(Guid.NewGuid().ToString(), (Time.time + time, handler));
+            string id = Guid.NewGuid().ToString();
+            _timers.Add(id, (Time.time + time, handler));
+            return id;
+        }
+
+        public void Remove(string timerId)
+        {
+            _timers.Remove(timerId);
         }
 
         public void Tick()
@@ -20,16 +28,32 @@ namespace Game.Scripts.Infrastructure.TimerService
             {
                 if (Time.time > time)
                 {
-                    handler.HandleTimer();
+                    _handlersToTrigger.Add(handler);
                     _idsToRemove.Add(id);
                 }
             }
 
+            ClearTimers();
+            TriggerHandlers();
+        }
+
+        private void TriggerHandlers()
+        {
+            foreach (var handler in _handlersToTrigger)
+            {
+                handler.HandleTimer();
+            }
+
+            _handlersToTrigger.Clear();
+        }
+
+        private void ClearTimers()
+        {
             foreach (var removeIndex in _idsToRemove)
             {
                 _timers.Remove(removeIndex);
             }
-            
+
             _idsToRemove.Clear();
         }
     }

@@ -20,7 +20,7 @@ namespace Game.Scripts.Gameplay.PresentersLayer
         private void SpawnPlayerShip(Vector3 position,
             Quaternion rotation)
         {
-            var shipView = _shipFactory.Create(position, rotation, _playerPresenter.UnitPresenter);
+            var shipView = _shipFactory.Create(position, rotation, _playerPresenter.ShipMovementPresenter);
             _playerPresenter.InitializePlayer(shipView.transform);
         }
     }

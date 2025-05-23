@@ -5,6 +5,6 @@ namespace Game.Scripts.Gameplay.ViewsLayer
 {
     public interface IShipFactory
     {
-        ShipView Create(Vector3 position, Quaternion rotation, UnitPresenter shipPresenter);
+        ShipView Create(Vector3 position, Quaternion rotation, ShipPresenter shipPresenter);
     }
 }
