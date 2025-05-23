@@ -1,14 +1,15 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Scripts.Gameplay.PresentersLayer;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Scripts.Gameplay.ViewsLayer
 {
     [RequireComponent(typeof(SphereCollider))]
     public class ShootingView : MonoBehaviour
     {
+        [Inject] private ICannonFactory _cannonFactory;
         [SerializeField] private SphereCollider targetTrigger;
         private IShooterPresenter _shooterPresenter;
         [SerializeField] private List<TakeDamageView> targets = new();
@@ -51,7 +52,9 @@ namespace Game.Scripts.Gameplay.ViewsLayer
 
         private void Shoot()
         {
-            var dir = ClosestTarget.transform.position - transform.position;
+            var target = ClosestTarget.transform;
+            var dir = target.position - transform.position;
+            _cannonFactory.Create(transform.position, target, _shooterPresenter.ShootingDamage, _shooterPresenter.ID);
             cannonEffect.transform.rotation = Quaternion.LookRotation(dir);
             cannonEffect.Play();
         }

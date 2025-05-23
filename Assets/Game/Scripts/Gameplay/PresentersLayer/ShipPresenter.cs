@@ -70,7 +70,6 @@ namespace Game.Scripts.Gameplay.PresentersLayer
 
         private void Shoot()
         {
-            Debug.Log("Shoot");
             OnShoot?.Invoke();
             _timerId = _timerService.SetupTimer(ShootingCooldown, this);
         }
@@ -78,6 +77,7 @@ namespace Game.Scripts.Gameplay.PresentersLayer
 
     public interface IShooterPresenter
     {
+        public string ID { get; }
         event Action OnShoot;
         public float ShootingCooldown { get; }
         public float ShootingDamage { get; }

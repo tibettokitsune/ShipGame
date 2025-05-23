@@ -11,5 +11,10 @@ namespace Game.Scripts.Gameplay.ViewsLayer
         {
             _takingDamagePresenter = takingDamagePresenter;
         }
+
+        public void TakeDamage(string ownerId, float damage)
+        {
+            _takingDamagePresenter.TakeDamage(damage, ownerId);
+        }
     }
 }
