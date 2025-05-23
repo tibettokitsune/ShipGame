@@ -16,7 +16,7 @@ namespace Game.Scripts.Gameplay.PresentersLayer
             ShipMovementPresenter = new ShipPresenter("Player", 
                 100f, 
                 1f, 
-                1f, 
+                10f, 
                 timerService);
         }
 

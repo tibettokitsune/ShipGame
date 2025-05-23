@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Gameplay.ViewsLayer
 {
@@ -7,7 +8,7 @@ namespace Game.Scripts.Gameplay.ViewsLayer
     {
         [SerializeField] private Rigidbody rigidbody;
         [SerializeField] private ParticleSystem contactEffect;
-        private const float CannonForce = 50f;
+        private const float CannonForce = 30f;
         private float _damage;
         private string _ownerId;
         private void OnValidate()
@@ -19,14 +20,19 @@ namespace Game.Scripts.Gameplay.ViewsLayer
         {
             _damage = damage;
             _ownerId = ownerId;
-            rigidbody.AddForce((target.position - transform.position).normalized * CannonForce, ForceMode.VelocityChange);
+            
+            var targetPositionWithError = target.position + Random.insideUnitSphere * 2f;
+            rigidbody.linearVelocity = BallisticCalculator.CalculateTrajectoryVelocity(transform.position, 
+                targetPositionWithError, 
+                .5f);
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
             var contact = other.gameObject.GetComponent<TakeDamageView>();
             if (contact)
             {
+                if(contact.OwnerId.Equals(_ownerId)) return;
                 contact.TakeDamage(_ownerId, _damage);
             }
 
