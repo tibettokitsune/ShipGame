@@ -5,8 +5,8 @@
         "Ships.PresentersLayer",
         "Ship.Infra",
         "Zenject",
-        "UniRx",
-        ""
+        "Unity.TextMeshPro",
+        "UniRx"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

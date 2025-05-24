@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.ViewsLayer
+namespace Game.Scripts.Infrastructure
 {
     public static class BallisticCalculator
     {

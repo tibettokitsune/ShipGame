@@ -11,6 +11,7 @@ namespace Game.Scripts.Gameplay
     {
         [Inject] private IShipFactory _shipFactory;
         [Inject] private IPlayerPresenter _playerPresenter;
+        [Inject] private IGiveMoneyUseCase _giveMoneyUseCase;
         [Inject] private ITimerService _timerService;
         [Inject(Id = "EnemiesSpawnPoints")] List<Transform> _enemiesSpawnPoints;
         private Vector3 StartPlayerAngle { get; } = new Vector3(0, 135f, 0);
@@ -36,7 +37,14 @@ namespace Game.Scripts.Gameplay
                     Quaternion.identity, 
                     shipPresenter);
                 var enemyPresenter = new EnemyShipPresenter(shipPresenter);
+
+                shipPresenter.OnDeath += ClaimPlayerReward;
             }
+        }
+
+        private void ClaimPlayerReward()
+        {
+            _giveMoneyUseCase.Execute(Random.Range(100, 250));
         }
 
         private void SpawnPlayerShip(Vector3 position,

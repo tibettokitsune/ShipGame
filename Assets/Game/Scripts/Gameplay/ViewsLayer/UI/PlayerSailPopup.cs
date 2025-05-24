@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Game.Scripts.Gameplay.ViewsLayer
+namespace Game.Scripts.Gameplay.ViewsLayer.UI
 {
-    public class PlayerSailScreen : UIScreen
+    public class PlayerSailPopup : UIScreen
     {
         [SerializeField] private Slider sailSlider;
         [Inject] private ISailPowerChangeUseCase _sailPowerChangeUseCase;

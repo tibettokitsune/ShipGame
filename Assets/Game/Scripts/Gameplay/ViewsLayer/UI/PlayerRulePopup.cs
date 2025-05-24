@@ -1,12 +1,11 @@
-using System;
 using Game.Scripts.Gameplay.PresentersLayer;
 using Game.Scripts.Infrastructure.UI;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Scripts.Gameplay.ViewsLayer
+namespace Game.Scripts.Gameplay.ViewsLayer.UI
 {
-    public class PlayerRuleScreen : UIScreen
+    public class PlayerRulePopup : UIScreen
     {
         [SerializeField] private WheelWidget wheel;
         [Inject] private IRotationPowerChangeUseCase _rotationPowerChangeUseCase;
