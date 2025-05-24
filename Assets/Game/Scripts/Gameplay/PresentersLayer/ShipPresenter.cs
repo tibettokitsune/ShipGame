@@ -1,8 +1,6 @@
 using System;
-using Game.Scripts.Gameplay.DataLayer.Unit;
 using Game.Scripts.Infrastructure.TimerService;
 using UniRx;
-using UnityEngine;
 
 namespace Game.Scripts.Gameplay.PresentersLayer
 {
@@ -25,7 +23,6 @@ namespace Game.Scripts.Gameplay.PresentersLayer
         public void NotifyTargetLost() => OnTargetLost?.Invoke();
 
         private float MaxHp { get; }
-        private UnitDataProvider _dataProvider;
 
         private string _timerId;
 
