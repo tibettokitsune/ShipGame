@@ -5,7 +5,7 @@ namespace Game.Scripts.Gameplay.PresentersLayer
 {
     public interface IPlayerPresenter
     {
-        ReactiveProperty<int> Coins { get; }
+        IReactiveProperty<int> Coins { get; }
         ShipPresenter ShipMovementPresenter { get; }
         void InitializePlayer(Transform transform);
     }

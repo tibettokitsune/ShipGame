@@ -6,6 +6,7 @@ namespace Game.Scripts.Gameplay.DataLayer
     {
         public override void InstallBindings()
         {
+            Container.BindInterfacesAndSelfTo<PlayerDataProvider>().AsSingle();
         }
     }
 }

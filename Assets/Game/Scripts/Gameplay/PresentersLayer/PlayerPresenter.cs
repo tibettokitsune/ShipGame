@@ -1,3 +1,4 @@
+using Game.Scripts.Gameplay.DataLayer;
 using Game.Scripts.Infrastructure;
 using Game.Scripts.Infrastructure.TimerService;
 using UniRx;
@@ -5,23 +6,27 @@ using UnityEngine;
 
 namespace Game.Scripts.Gameplay.PresentersLayer
 {
-    public class PlayerPresenter : IPlayerPresenter, 
-        ISailPowerChangeUseCase, 
+    public class PlayerPresenter : IPlayerPresenter,
+        ISailPowerChangeUseCase,
         IRotationPowerChangeUseCase,
         IGiveMoneyUseCase
     {
-        public ReactiveProperty<int> Coins { get; } = new();
+        public IReactiveProperty<int> Coins => _playerDataProvider.Coins;
         public ShipPresenter ShipMovementPresenter { get; }
+        private readonly IPlayerDataProvider _playerDataProvider;
         private readonly ICameraService _cameraService;
 
-        public PlayerPresenter(ICameraService cameraService, ITimerService timerService)
+        public PlayerPresenter(
+            IPlayerDataProvider playerDataProvider,
+            ICameraService cameraService,
+            ITimerService timerService)
         {
+            _playerDataProvider = playerDataProvider;
             _cameraService = cameraService;
-
-            ShipMovementPresenter = new ShipPresenter("Player", 
-                100f, 
-                1f, 
-                10f, 
+            ShipMovementPresenter = new ShipPresenter("Player",
+                100f,
+                1f,
+                10f,
                 timerService);
         }
 
@@ -39,7 +44,7 @@ namespace Game.Scripts.Gameplay.PresentersLayer
         {
             ShipMovementPresenter.Rotate(power);
         }
-        
+
         void IGiveMoneyUseCase.Execute(int inc)
         {
             Coins.Value += inc;
