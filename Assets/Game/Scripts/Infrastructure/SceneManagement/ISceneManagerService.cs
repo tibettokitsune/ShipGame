@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Game.Scripts.Infrastructure.SceneManagment
+namespace Game.Scripts.Infrastructure.SceneManagement
 {
     public enum SceneLayer
     {

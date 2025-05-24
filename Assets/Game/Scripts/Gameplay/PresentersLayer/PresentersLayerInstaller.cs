@@ -1,3 +1,5 @@
+using Game.Scripts.Gameplay.PresentersLayer.Ships;
+using Game.Scripts.Gameplay.PresentersLayer.Wind;
 using Zenject;
 
 namespace Game.Scripts.Gameplay.PresentersLayer

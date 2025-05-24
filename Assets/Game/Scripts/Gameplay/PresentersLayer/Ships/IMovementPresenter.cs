@@ -1,4 +1,4 @@
-namespace Game.Scripts.Gameplay.PresentersLayer
+namespace Game.Scripts.Gameplay.PresentersLayer.Ships
 {
     public interface IMovementPresenter
     {

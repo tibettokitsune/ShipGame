@@ -1,8 +1,8 @@
-using Game.Scripts.Gameplay.PresentersLayer;
+using Game.Scripts.Gameplay.PresentersLayer.Ships;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Scripts.Gameplay.ViewsLayer
+namespace Game.Scripts.Gameplay.ViewsLayer.Ships
 {
     public class ShipFactory : IShipFactory
     {

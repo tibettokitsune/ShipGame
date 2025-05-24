@@ -1,4 +1,5 @@
 using Game.Scripts.Gameplay.PresentersLayer;
+using Game.Scripts.Gameplay.PresentersLayer.Ships;
 using Game.Scripts.Infrastructure.UI;
 using UnityEngine;
 using UnityEngine.UI;

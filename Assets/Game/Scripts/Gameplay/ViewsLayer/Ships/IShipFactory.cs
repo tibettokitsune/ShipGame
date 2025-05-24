@@ -1,7 +1,7 @@
-using Game.Scripts.Gameplay.PresentersLayer;
+using Game.Scripts.Gameplay.PresentersLayer.Ships;
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.ViewsLayer
+namespace Game.Scripts.Gameplay.ViewsLayer.Ships
 {
     public interface IShipFactory
     {

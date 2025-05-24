@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.ViewsLayer
+namespace Game.Scripts.Gameplay.ViewsLayer.Ships
 {
     public class ShipSail : MonoBehaviour
     {

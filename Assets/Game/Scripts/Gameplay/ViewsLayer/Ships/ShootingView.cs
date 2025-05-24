@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Game.Scripts.Gameplay.PresentersLayer;
+using Game.Scripts.Gameplay.PresentersLayer.Ships;
+using Game.Scripts.Gameplay.ViewsLayer.Cannons;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Scripts.Gameplay.ViewsLayer
+namespace Game.Scripts.Gameplay.ViewsLayer.Ships
 {
     [RequireComponent(typeof(SphereCollider))]
     public class ShootingView : MonoBehaviour

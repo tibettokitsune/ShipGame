@@ -1,4 +1,5 @@
-using Game.Scripts.Gameplay.PresentersLayer;
+using Game.Scripts.Gameplay.PresentersLayer.Ships;
+using Game.Scripts.Gameplay.PresentersLayer.Wind;
 using Game.Scripts.Infrastructure;
 using Game.Scripts.Infrastructure.UI;
 using TMPro;

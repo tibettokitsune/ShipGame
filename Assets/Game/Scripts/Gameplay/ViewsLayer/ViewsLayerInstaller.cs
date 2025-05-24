@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Game.Scripts.Gameplay.ViewsLayer.Cannons;
+using Game.Scripts.Gameplay.ViewsLayer.Ships;
 using UnityEngine;
 using Zenject;
 

@@ -1,7 +1,7 @@
 using System;
 using UniRx;
 
-namespace Game.Scripts.Gameplay.PresentersLayer
+namespace Game.Scripts.Gameplay.PresentersLayer.Ships
 {
     public interface ITakingDamagePresenter
     {

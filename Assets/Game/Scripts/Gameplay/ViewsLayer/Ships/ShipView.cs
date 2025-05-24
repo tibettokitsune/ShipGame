@@ -1,11 +1,12 @@
-using Game.Scripts.Gameplay.PresentersLayer;
+using Game.Scripts.Gameplay.PresentersLayer.Ships;
+using Game.Scripts.Gameplay.PresentersLayer.Wind;
 using UniRx;
 using UnityEngine;
 using Zenject;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
-namespace Game.Scripts.Gameplay.ViewsLayer
+namespace Game.Scripts.Gameplay.ViewsLayer.Ships
 {
     [RequireComponent(typeof(Rigidbody))]
     public class ShipView : MonoBehaviour

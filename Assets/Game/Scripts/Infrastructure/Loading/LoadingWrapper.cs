@@ -1,6 +1,4 @@
-using Game.Scripts.Infrastructure.Loading;
-
-namespace Game.Scripts.Infrastructure
+namespace Game.Scripts.Infrastructure.Loading
 {
     public class LoadingWrapper : ILoading
     {

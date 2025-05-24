@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Game.Scripts.Infrastructure.SceneManagment
+namespace Game.Scripts.Infrastructure.SceneManagement
 {
     public class SceneManagerService : IAsyncInitializable, ISceneManagerService
     {

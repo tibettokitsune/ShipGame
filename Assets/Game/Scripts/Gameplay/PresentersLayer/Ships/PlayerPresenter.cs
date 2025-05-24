@@ -4,7 +4,7 @@ using Game.Scripts.Infrastructure.TimerService;
 using UniRx;
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.PresentersLayer
+namespace Game.Scripts.Gameplay.PresentersLayer.Ships
 {
     public class PlayerPresenter : IPlayerPresenter,
         ISailPowerChangeUseCase,

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Game.Scripts.Gameplay.PresentersLayer;
+using Game.Scripts.Gameplay.PresentersLayer.Ships;
 using Game.Scripts.Gameplay.ViewsLayer;
+using Game.Scripts.Gameplay.ViewsLayer.Ships;
 using Game.Scripts.Infrastructure.TimerService;
 using UnityEngine;
 using Zenject;

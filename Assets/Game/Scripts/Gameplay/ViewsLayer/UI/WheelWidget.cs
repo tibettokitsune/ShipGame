@@ -7,22 +7,19 @@ namespace Game.Scripts.Gameplay.ViewsLayer.UI
     [RequireComponent(typeof(RectTransform))]
     public class WheelWidget : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
-        [Header("Rotation Settings")] [Range(-180, 0)]
-        public float minAngle = -150f;
-
-        [Range(0, 180)] public float maxAngle = 150f;
-        public float rotationSensitivity = 1f;
-
-        [Header("Visual")] public Image wheelImage;
-
-        private RectTransform _rectTransform;
-        private float _currentAngle;
+        [SerializeField, Range(-180, 0)] private float minAngle = -150f;
+        [SerializeField, Range(0, 180)] private float maxAngle = 150f;
+        [SerializeField] private float rotationSensitivity = 1f;
+        [SerializeField] private Image wheelImage;
 
         public float Value => Mathf.Clamp(_currentAngle / Mathf.Max(Mathf.Abs(minAngle), Mathf.Abs(maxAngle)), -1f, 1f);
 
+        private RectTransform _rectTransform;
+        private float _currentAngle;
         private bool _isDragging;
         private const float Threshold = 0.05f;
         private const float ReturnSpeed = 15f;
+        
         private void Awake()
         {
             _rectTransform = GetComponent<RectTransform>();

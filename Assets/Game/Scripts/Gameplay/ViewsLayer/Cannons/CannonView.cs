@@ -1,9 +1,9 @@
-using System;
+using Game.Scripts.Gameplay.ViewsLayer.Ships;
 using Game.Scripts.Infrastructure;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game.Scripts.Gameplay.ViewsLayer
+namespace Game.Scripts.Gameplay.ViewsLayer.Cannons
 {
     public class CannonView : MonoBehaviour
     {

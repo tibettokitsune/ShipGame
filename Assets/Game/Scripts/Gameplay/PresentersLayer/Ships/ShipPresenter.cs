@@ -2,7 +2,7 @@ using System;
 using Game.Scripts.Infrastructure.TimerService;
 using UniRx;
 
-namespace Game.Scripts.Gameplay.PresentersLayer
+namespace Game.Scripts.Gameplay.PresentersLayer.Ships
 {
     public class ShipPresenter : IMovementPresenter, ITakingDamagePresenter, IShooterPresenter, ITimerHandler
     {

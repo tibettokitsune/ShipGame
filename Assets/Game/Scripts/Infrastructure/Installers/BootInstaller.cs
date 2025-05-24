@@ -1,5 +1,5 @@
 using Game.Scripts.Infrastructure.Loading;
-using Game.Scripts.Infrastructure.SceneManagment;
+using Game.Scripts.Infrastructure.SceneManagement;
 using Zenject;
 
 namespace Game.Scripts.Infrastructure.Installers
